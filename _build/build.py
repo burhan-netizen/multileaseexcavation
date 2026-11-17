@@ -33,8 +33,8 @@ def schema_business():
       "alternateName": BIZ,
       "description": "Sydney demolition and excavation contractor with its own fleet: house and commercial demolition, strip outs, bulk and tight access excavation, site clean up and hook bins.",
       "telephone": "+61 448 741 813",
-      "image": "media/sh125-loading.webp",
-      "logo": "media/logo-square.png",
+      "image": SITE + "/og-image.jpg", "url": SITE + "/",
+      "logo": SITE + "/media/logo-square.png",
       "address": {"@type": "PostalAddress", "streetAddress": "32 Mulgoa Road", "addressLocality": "Regentville", "addressRegion": "NSW", "postalCode": "2745", "addressCountry": "AU"},
       "areaServed": [{"@type": "City", "name": "Sydney"}, "Penrith", "Western Sydney", "Inner West", "North Shore", "South West Sydney"],
       "identifier": {"@type": "PropertyValue", "propertyID": "ABN", "value": "56 664 948 501"},
@@ -42,7 +42,9 @@ def schema_business():
       "knowsAbout": ["Demolition", "Excavation", "Tight access excavation", "Strip outs", "Site clean up", "Hook bins", "OSD tank excavation"]
     }
 
-def head(title, desc, extra_schema=None):
+SITE = "https://multileaseexcavation.vercel.app"
+
+def head(title, desc, extra_schema=None, path=""):
     blocks = [schema_business()] + (extra_schema or [])
     sch = "\n".join('<script type="application/ld+json">' + json.dumps(b, ensure_ascii=False) + '</script>' for b in blocks)
     return f'''<!doctype html>
@@ -54,11 +56,21 @@ def head(title, desc, extra_schema=None):
 <meta name="description" content="{desc}">
 <meta name="robots" content="noindex, nofollow">
 <meta name="theme-color" content="#2a1d16">
+<link rel="canonical" href="{SITE}/{path}">
 <meta property="og:type" content="website">
+<meta property="og:site_name" content="Multilease Excavation">
+<meta property="og:url" content="{SITE}/{path}">
 <meta property="og:title" content="{title}">
 <meta property="og:description" content="{desc}">
-<meta property="og:image" content="media/sh125-loading.webp">
+<meta property="og:image" content="{SITE}/og-image.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta property="og:image:alt" content="Multilease Excavation: Knock it down. Dig it out. Demolition and excavation in Sydney. Call 0448 741 813.">
 <meta property="og:locale" content="en_AU">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="{title}">
+<meta name="twitter:description" content="{desc}">
+<meta name="twitter:image" content="{SITE}/og-image.jpg">
 <link rel="icon" href="media/apple-touch-icon.png">
 <link rel="apple-touch-icon" href="media/apple-touch-icon.png">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -140,7 +152,7 @@ def footer():
         <li>Registered Buy NSW supplier</li>
         <li><span class="ph-note">Licence no. to confirm</span></li></ul></div>
     </div>
-    <div class="giant" aria-hidden="true">KNOCK IT DOWN. DIG IT OUT.</div>
+    <div class="giant" aria-hidden="true">KNOCK IT DOWN.<br><span>DIG IT OUT.</span></div>
     <div class="legal">
       <span>&copy; 2026 Multilease Excavation Pty Ltd. Servicing Greater Sydney from Regentville.</span>
       <span class="credit">Concept website by <a href="https://magolabs.in" target="_blank" rel="noopener">Mago Labs</a> <span class="beat" aria-hidden="true">&#9829;</span></span>

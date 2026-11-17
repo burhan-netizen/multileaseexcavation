@@ -141,7 +141,7 @@ def build(g):
         bc = {"@context":"https://schema.org","@type":"BreadcrumbList","itemListElement":[{"@type":"ListItem","position":1,"name":"Home","item":"index.html"},{"@type":"ListItem","position":2,"name":pg["crumb"],"item":pg["file"]}]}
         svc = {"@context":"https://schema.org","@type":"Service","serviceType":pg["crumb"],"provider":{"@type":"GeneralContractor","name":"Multilease Excavation Pty Ltd","telephone":"+61 448 741 813"},"areaServed":{"@type":"City","name":"Sydney"},"description":pg["desc"]}
         anchor = f' id="{pg["anchor_id"]}"' if pg["anchor_id"] else ""
-        html = f'''{head(pg["title"], pg["desc"], [faq_schema(pg["faq"]), bc, svc])}{header(home=False)}
+        html = f'''{head(pg["title"], pg["desc"], [faq_schema(pg["faq"]), bc, svc], pg["file"])}{header(home=False)}
 <main id="main">
 <section class="page-hero" aria-labelledby="h1">
   <div class="hero-grid">

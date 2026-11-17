@@ -94,7 +94,7 @@
 
   /* depth gauge + footer parallax + mobile bar */
   var gauge=d.querySelector('.gauge'), lvl=gauge&&gauge.querySelector('.lvl'), val=gauge&&gauge.querySelector('.val');
-  var giant=d.querySelector('.giant'), mbar=d.querySelector('.mbar'), darks=[].slice.call(d.querySelectorAll('.hero,.band,.page-hero'));
+  var mbar=d.querySelector('.mbar'), darks=[].slice.call(d.querySelectorAll('.hero,.band,.page-hero'));
   var maxDepth=parseFloat(gauge?gauge.dataset.max:6)||6, t2=false;
   function onScroll(){
     t2=false;
@@ -103,7 +103,6 @@
       var mid=window.innerHeight/2, dark=darks.some(function(s){var r=s.getBoundingClientRect();return r.top<mid&&r.bottom>mid;});
       gauge.classList.toggle('on-dark',dark);}
     if(mbar) mbar.classList.toggle('show',y>window.innerHeight*0.6);
-    if(giant&&!reduce){var r=giant.getBoundingClientRect(); var q=Math.max(0,Math.min(1.5,(window.innerHeight-r.top)/window.innerHeight)); giant.style.transform='translateX('+(-q*8)+'%)';}
   }
   window.addEventListener('scroll',function(){if(!t2){t2=true;requestAnimationFrame(onScroll);}},{passive:true});
   onScroll();
