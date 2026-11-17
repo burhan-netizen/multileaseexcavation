@@ -71,8 +71,11 @@ def head(title, desc, extra_schema=None, path=""):
 <meta name="twitter:title" content="{title}">
 <meta name="twitter:description" content="{desc}">
 <meta name="twitter:image" content="{SITE}/og-image.jpg">
-<link rel="icon" href="media/apple-touch-icon.png">
+<link rel="icon" href="favicon.ico" sizes="48x48">
+<link rel="icon" type="image/png" sizes="32x32" href="media/icon-32.png">
+<link rel="icon" type="image/png" sizes="192x192" href="media/icon-192.png">
 <link rel="apple-touch-icon" href="media/apple-touch-icon.png">
+<link rel="manifest" href="site.webmanifest">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=JetBrains+Mono:wght@500&display=swap" rel="stylesheet">
